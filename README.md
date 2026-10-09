@@ -68,6 +68,23 @@ pnpm --filter @workspace/karachi-food-pages dev
 
 Vite prints the local URL after the development server starts.
 
+## Deploy to Vercel
+
+The repository includes a root-level `vercel.json` configured for this pnpm
+workspace. Import the GitHub repository into Vercel and keep the **Root
+Directory** set to the repository root (`.`), not
+`artifacts/karachi-food-pages`. The workspace root is needed to install and
+resolve shared `workspace:*` dependencies.
+
+The Vercel configuration installs the frozen pnpm lockfile, builds only the
+showcase app, publishes `artifacts/karachi-food-pages/dist/public`, and routes
+app paths such as `/demo/chai-hotel` back to the SPA entry point. No Vercel
+environment variables are required for the current prototype.
+
+After importing, deploy from Vercel or push a commit to the connected Git
+branch. Check that the homepage and a direct demo URL both load on the
+deployment.
+
 ## Checks and production build
 
 Run the app-specific TypeScript check and production build from the repository
